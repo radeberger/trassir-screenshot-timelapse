@@ -1,2 +1,2 @@
 # trassir-screenshot-timelapse
-some scripts for making timelapse and downloading bideo from Trassir server using Trassir SDK
+some scripts for making timelapse and downloading video from Trassir server using Trassir SDK
