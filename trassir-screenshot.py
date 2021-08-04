@@ -1,7 +1,7 @@
 import os
 import sys
 
-path = "C:\\Users\\usr6243828\\PycharmProjects\\Trassir\\"
+path = "f:\\Trassir\\screenshots\\"
 import datetime
 from datetime import timedelta
 import urllib.request
@@ -68,5 +68,5 @@ while start_date <= end_date:
     # шаг скриншотов задаем в секундах
     i = i + 1
 
-os.system("ffmpeg -framerate 10 -f image2 -i " + path + "\\" + "image%6d.jpg -qscale:v 3 timelapse.avi")
+#os.system("ffmpeg -framerate 10 -f image2 -i " + path + "\\" + "image%6d.jpg -qscale:v 3 timelapse.avi")
 # делаем таймлапс
