@@ -6,7 +6,7 @@ import urllib3
 import datetime
 
 urllib3.disable_warnings()
-path = "C:\\Users\\usr6243828\\PycharmProjects\\Trassir\\save_video.avi"
+path = "f:\\majino-screenshots\\save_video18.avi"
 # ssl._create_default_https_context = ssl._create_unverified_context
 try:
     _create_unverified_https_context = ssl._create_unverified_context
