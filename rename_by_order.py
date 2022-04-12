@@ -1,6 +1,6 @@
 import os
 
-os.chdir('f:\\Trassir\\20210706081000')
+os.chdir('f:\\Trassir\\screenshots')
 print(os.getcwd())
 COUNT = 0
 
