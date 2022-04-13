@@ -35,7 +35,7 @@ start_date = datetime.datetime(start_year, start_month, start_day, start_hour, s
 print("Введите продолжительность записи в минутах (от 1 до 30)")
 record_dur = int(input())*60*1000000
 start_date = int(start_date.timestamp()*1000000)
-with urllib.request.urlopen("https://172.18.16.253:8080/login?password=SdKpa$$") as url1:
+with urllib.request.urlopen("https://172.31.176.3:8080/login?password=SdKpa$$") as url1:
     sid = url1.read().decode("utf-8")
 sid = sid.split()[-2].replace("\"", "")
 print(sid)
@@ -49,7 +49,7 @@ data = {"resource_guid": guid,
         "is_hardware": 0,
         "prefer_substream": 0}
 
-url1 = "https://172.18.16.253:8080/jit-export-create-task?sid=" + sid
+url1 = "https://172.31.176.3:8080/jit-export-create-task?sid=" + sid
 answer = requests.post(url1, data=json.dumps(data), headers=headers, verify=False)
 print(answer)
 response = str(answer.json())
@@ -60,5 +60,5 @@ print(task_id)
 f = open(path, 'wb')
 
 f.write(urllib.request.urlopen(
-    "https://172.18.16.253:8080/jit-export-download?sid=" + sid + "&task_id=" + task_id).read())
+    "https://172.31.176.3:8080/jit-export-download?sid=" + sid + "&task_id=" + task_id).read())
 f.close()

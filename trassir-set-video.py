@@ -51,11 +51,12 @@ record_dur = int(input())*1000000
 start_date = int(start_date.timestamp()*1000000 + 3*3600*1000000)
 end_date = int(end_date.timestamp()*1000000 + 3*3600*1000000)
 #+3 часа, почему то съезжает время на 3 часа назад, timezone???
-print("Введите частоту записи в получасах (1-каждые полчаса, 2 - полчаса в час и т.д.")
-record_quant = int(input())*1800*1000000
+print("Введите частоту записи в часах (1-каждый час, 2 - каждые 2 часа и т.д.")
+record_quant = int(input())*3600*1000000
 
 while start_date <= end_date:
-    with urllib.request.urlopen("https://172.18.16.253:8080/login?password=SdKpa$$") as url1:
+    #with urllib.request.urlopen("https://172.18.16.253:8080/login?password=SdKpa$$") as url1:
+    with urllib.request.urlopen("https://172.31.176.3:8080/login?password=SdKpa$$") as url1:
         sid = url1.read().decode("utf-8")
     sid = sid.split()[-2].replace("\"", "")
     print("------------------")
@@ -71,7 +72,8 @@ while start_date <= end_date:
             "is_hardware": 0,
             "prefer_substream": 0}
     #print(record_quant/1000000/3600)
-    url1 = "https://172.18.16.253:8080/jit-export-create-task?sid=" + sid
+    #url1 = "https://172.18.16.253:8080/jit-export-create-task?sid=" + sid
+    url1 = "https://172.31.176.3:8080/jit-export-create-task?sid=" + sid
     answer = requests.post(url1, data=json.dumps(data), headers=headers, verify=False)
     print(answer)
     response = str(answer.json())
@@ -82,10 +84,13 @@ while start_date <= end_date:
     try:
         path = "C:\\Users\\usr6243828\\PycharmProjects\\Trassir\\" + str(start_date) + ".avi"
         f = open(path, 'wb')
-        f.write(urllib.request.urlopen("https://172.18.16.253/jit-export-download?sid=" + sid + "&task_id=" + task_id).read())
+        #f.write(urllib.request.urlopen("https://172.18.16.253/jit-export-download?sid=" + sid + "&task_id=" + task_id).read())
+        f.write(urllib.request.urlopen("https://172.31.176.3/jit-export-download?sid=" + sid + "&task_id=" + task_id).read())
         f.close()
         #запись файла
+        #url2 = "https://172.18.16.253:8080/jit-export-cancel-task?sid=" + sid + "&task_id=" + task_id
         url2 = "https://172.31.176.3:8080/jit-export-cancel-task?sid=" + sid + "&task_id=" + task_id
+        #!!!!!!!!!!!!!!!!!!!!!!!!
         answer = requests.get(url2, verify=False)
         #сброс задачи
         print(answer)
